@@ -97,9 +97,20 @@ class _BedroomScreenState extends State<BedroomScreen> with SingleTickerProvider
                               ),
                             ),
                             const Positioned(
+                              left: 54,
+                              right: 54,
+                              bottom: 32,
+                              child: _BedRug(),
+                            ),
+                            const Positioned(
                               left: 18,
                               bottom: 72,
                               child: _SideTable(),
+                            ),
+                            Positioned(
+                              left: 22,
+                              bottom: 52,
+                              child: _FloorMemories(memories: memories),
                             ),
                             Positioned(
                               left: 34,
@@ -336,6 +347,68 @@ class _SideTable extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class _BedRug extends StatelessWidget {
+  const _BedRug();
+
+  @override
+  Widget build(BuildContext context) {
+    return IgnorePointer(
+      child: Container(
+        height: 22,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(18),
+          gradient: const LinearGradient(
+            colors: [Color(0x66443459), Color(0x22504966)],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _FloorMemories extends StatelessWidget {
+  const _FloorMemories({required this.memories});
+
+  final List<MemoryItem> memories;
+
+  @override
+  Widget build(BuildContext context) {
+    if (memories.length < 2) {
+      return const SizedBox.shrink();
+    }
+
+    return Row(
+      children: [
+        for (final memory in memories.skip(1).take(2))
+          Container(
+            margin: const EdgeInsets.only(left: 6),
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+            decoration: BoxDecoration(
+              color: const Color(0xCC2D2538),
+              borderRadius: BorderRadius.circular(10),
+              border: Border.all(color: const Color(0x886D5D83)),
+            ),
+            child: Text(
+              _floorMemoryLabel(memory.kind),
+              style: const TextStyle(fontSize: 10, color: Color(0xFFE6DBF5)),
+            ),
+          ),
+      ],
+    );
+  }
+
+  String _floorMemoryLabel(MemoryKind kind) {
+    switch (kind) {
+      case MemoryKind.image:
+        return 'إطار صورة';
+      case MemoryKind.audio:
+        return 'تسجيل صوتي';
+      case MemoryKind.video:
+        return 'مقطع فيديو';
+    }
   }
 }
 

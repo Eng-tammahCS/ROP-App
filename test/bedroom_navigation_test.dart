@@ -21,7 +21,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('محادثة لولو'), findsOneWidget);
-    expect(find.textContaining('كل شيء هنا محلي وآمن'), findsOneWidget);
+    expect(find.textContaining('كل شيء هنا محليّ وآمن'), findsOneWidget);
     expect(find.text('اكتب رسالة لطيفة...'), findsOneWidget);
   });
 }
