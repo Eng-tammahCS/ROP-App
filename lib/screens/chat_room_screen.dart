@@ -32,7 +32,7 @@ class ChatRoomScreen extends StatelessWidget {
                 borderRadius: BorderRadius.circular(14),
               ),
               child: const Text(
-                'مساحة خاصة بينكما فقط. كل شيء هنا محلي وآمن على هذا الجهاز.',
+                'مساحة خاصة بينكما فقط. كل شيء هنا محليّ وآمن على هذا الجهاز.',
                 textAlign: TextAlign.center,
                 style: TextStyle(color: Color(0xFFDCCFEB), fontSize: 12),
               ),

@@ -224,7 +224,7 @@ class _Bed extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final breathe = status == CharacterStatus.asleep ? (math.sin(idle * math.pi * 2) * 2.0) : 0.0;
+    final breathingOffset = status == CharacterStatus.asleep ? (math.sin(idle * math.pi * 2) * 2.0) : 0.0;
 
     return Container(
       height: 138,
@@ -257,7 +257,7 @@ class _Bed extends StatelessWidget {
             left: 12,
             bottom: 16,
             child: Transform.translate(
-              offset: Offset(0, breathe),
+              offset: Offset(0, breathingOffset),
               child: Container(
                 width: 92,
                 height: 56,
@@ -278,7 +278,7 @@ class _Bed extends StatelessWidget {
             left: 24,
             bottom: 12,
             child: Text(
-              status == CharacterStatus.asleep ? 'لولو نائمة بطمأنينة على السرير' : 'السرير ينتظر لولو',
+              _bedStatusText(status),
               style: const TextStyle(
                 color: Color(0xFFF1E9FF),
                 fontSize: 12,
@@ -289,6 +289,13 @@ class _Bed extends StatelessWidget {
         ],
       ),
     );
+  }
+
+  String _bedStatusText(CharacterStatus currentStatus) {
+    if (currentStatus == CharacterStatus.asleep) {
+      return 'لولو نائمة بطمأنينة على السرير';
+    }
+    return 'السرير ينتظر لولو';
   }
 }
 
@@ -433,12 +440,18 @@ class _RoomMoodStrip extends StatelessWidget {
         border: Border.all(color: Color.lerp(const Color(0x66B18FD2), const Color(0x88FFE2A7), glow)!),
       ),
       child: Text(
-        partnerStatus == CharacterStatus.asleep
-            ? 'المزاج الآن: سكينة ليلية ودفء خافت.'
-            : 'المزاج الآن: حضور لطيف وحياة خفيفة.',
+        _moodText(partnerStatus),
         textAlign: TextAlign.center,
         style: const TextStyle(fontWeight: FontWeight.w600, fontSize: 12),
       ),
     );
+  }
+
+  String _moodText(CharacterStatus status) {
+    const prefix = 'المزاج الآن: ';
+    if (status == CharacterStatus.asleep) {
+      return '${prefix}سكينة ليلية ودفء خافت.';
+    }
+    return '${prefix}حضور لطيف وحياة خفيفة.';
   }
 }
