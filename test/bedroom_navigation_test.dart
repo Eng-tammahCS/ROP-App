@@ -7,7 +7,8 @@ void main() {
     await tester.pumpWidget(const MaterialApp(home: BedroomScreen()));
 
     expect(find.text('غرفتنا'), findsOneWidget);
-    expect(find.textContaining('بيت صغير حيّ'), findsOneWidget);
+    expect(find.textContaining('مساحتكما الدافئة'), findsOneWidget);
+    expect(find.textContaining('لولو نائمة بطمأنينة على السرير'), findsOneWidget);
     expect(find.text('اكتب رسالة لطيفة...'), findsNothing);
   });
 
@@ -20,6 +21,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(find.text('محادثة لولو'), findsOneWidget);
+    expect(find.textContaining('كل شيء هنا محلي وآمن'), findsOneWidget);
     expect(find.text('اكتب رسالة لطيفة...'), findsOneWidget);
   });
 }

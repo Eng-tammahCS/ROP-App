@@ -86,6 +86,14 @@ class _CreaturePainter extends CustomPainter {
     final horn = Paint()..color = color.withOpacity(0.85);
     canvas.drawOval(const Rect.fromLTWH(24, 6, 24, 24), horn);
     canvas.drawOval(Rect.fromLTWH(size.width - 48, 6, 24, 24), horn);
+    canvas.drawOval(
+      Rect.fromLTWH(26, size.height - 26, 18, 10),
+      Paint()..color = color.withOpacity(0.56),
+    );
+    canvas.drawOval(
+      Rect.fromLTWH(size.width - 44, size.height - 26, 18, 10),
+      Paint()..color = color.withOpacity(0.56),
+    );
 
     final eyePaint = Paint()
       ..color = Colors.white
@@ -125,6 +133,9 @@ class _CreaturePainter extends CustomPainter {
         ..style = PaintingStyle.stroke
         ..strokeWidth = 2,
     );
+
+    canvas.drawCircle(Offset(size.width / 2 - 22, 76), 4, Paint()..color = const Color(0x33FFC6D9));
+    canvas.drawCircle(Offset(size.width / 2 + 22, 76), 4, Paint()..color = const Color(0x33FFC6D9));
   }
 
   @override

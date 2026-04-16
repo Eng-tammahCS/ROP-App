@@ -13,14 +13,23 @@ class LocalIglooRepository {
         MemoryItem(
           id: 'm1',
           title: 'ضحكة المساء',
+          kind: MemoryKind.image,
           localPath: 'local://memory/evening.jpg',
           story: 'صورة من أمس على ضوء النافذة.',
         ),
         MemoryItem(
           id: 'm2',
           title: 'قهوة السبت',
+          kind: MemoryKind.audio,
           localPath: 'local://memory/coffee.jpg',
           story: 'لحظة هادئة قبل النوم.',
+        ),
+        MemoryItem(
+          id: 'm3',
+          title: 'لقطة الشرفة',
+          kind: MemoryKind.video,
+          localPath: 'local://memory/balcony.mp4',
+          story: 'فيديو قصير لصباح هادئ.',
         ),
       ];
 

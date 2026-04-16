@@ -23,6 +23,20 @@ class ChatRoomScreen extends StatelessWidget {
         ),
         body: Column(
           children: [
+            Container(
+              width: double.infinity,
+              padding: const EdgeInsets.fromLTRB(16, 12, 16, 10),
+              margin: const EdgeInsets.fromLTRB(16, 12, 16, 6),
+              decoration: BoxDecoration(
+                color: const Color(0xFF2E243F),
+                borderRadius: BorderRadius.circular(14),
+              ),
+              child: const Text(
+                'مساحة خاصة بينكما فقط. كل شيء هنا محلي وآمن على هذا الجهاز.',
+                textAlign: TextAlign.center,
+                style: TextStyle(color: Color(0xFFDCCFEB), fontSize: 12),
+              ),
+            ),
             Expanded(
               child: ListView.builder(
                 padding: const EdgeInsets.all(16),
@@ -38,6 +52,7 @@ class ChatRoomScreen extends StatelessWidget {
                       decoration: BoxDecoration(
                         color: item.isMine ? const Color(0xFF544069) : const Color(0xFF372B4A),
                         borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: const Color(0x3349D0B6)),
                       ),
                       child: Text(item.text),
                     ),
