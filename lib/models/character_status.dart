@@ -1,0 +1,1 @@
+enum CharacterStatus { awake, asleep }
