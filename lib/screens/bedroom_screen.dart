@@ -372,17 +372,21 @@ class _BedRug extends StatelessWidget {
 class _FloorMemories extends StatelessWidget {
   const _FloorMemories({required this.memories});
 
+  static const int _floorMemoryStartIndex = 1;
+  static const int _floorMemorySlots = 2;
+  static const int _minMemoriesForFloorDisplay = 3;
+
   final List<MemoryItem> memories;
 
   @override
   Widget build(BuildContext context) {
-    if (memories.length < 2) {
+    if (memories.length < _minMemoriesForFloorDisplay) {
       return const SizedBox.shrink();
     }
 
     return Row(
       children: [
-        for (final memory in memories.skip(1).take(2))
+        for (final memory in memories.skip(_floorMemoryStartIndex).take(_floorMemorySlots))
           Container(
             margin: const EdgeInsets.only(left: 6),
             padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
